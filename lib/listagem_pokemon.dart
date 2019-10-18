@@ -3,18 +3,13 @@ import 'package:flutter_app/visualizar_pokemon.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-class ListagemPokemon extends StatefulWidget {
+class ListagemPokemon extends StatelessWidget {
   final String title;
 
   ListagemPokemon({
     this.title,
   });
 
-  @override
-  _ListagemPokemonState createState() => _ListagemPokemonState();
-}
-
-class _ListagemPokemonState extends State<ListagemPokemon> {
   List<dynamic> _listaPokemons;
 
   Future _carregarLista() async {
@@ -36,7 +31,7 @@ class _ListagemPokemonState extends State<ListagemPokemon> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.title,
+          title,
         ),
       ),
       body: Center(
@@ -75,6 +70,7 @@ class _ListagemPokemonState extends State<ListagemPokemon> {
                           _listaPokemons[index]['url'],
                           style: TextStyle(
                             fontSize: 18.0,
+                            color: Colors.lightBlueAccent,
                           ),
                         ),
                       ),

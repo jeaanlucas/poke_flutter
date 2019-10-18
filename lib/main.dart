@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Pokemons',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: ListagemPokemon(
         title: 'Listagem de Pokemons',

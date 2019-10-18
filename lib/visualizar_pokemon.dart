@@ -18,6 +18,11 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
 
   _VisualizarPokemonState(this.url);
 
+  List<Color> coresHabilidades = [
+    Colors.purpleAccent,
+    Colors.lightGreen,
+    Colors.pinkAccent,
+  ];
   List habilidades;
   String nome;
   String foto;
@@ -48,6 +53,9 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -82,6 +90,7 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0,
+                  color: Colors.redAccent,
                 ),
               ),
               Flexible(
@@ -94,12 +103,21 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
                           capitalize(habilidades[index]['ability']['name']),
                           style: TextStyle(
                             fontSize: 18.0,
+                            color: coresHabilidades[index],
                           ),
                         ),
                       ),
                     );
                   },
                 ),
+              ),
+              SizedBox(
+                height: 100.0,
+              ),
+              Image.network(
+                'https://miro.medium.com/max/350/1*Yf66eLjU4H3g7pIvpXlM5w.jpeg',
+                width: width * 0.7,
+                height: height * 0.4,
               ),
             ],
           );
