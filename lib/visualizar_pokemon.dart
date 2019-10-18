@@ -18,7 +18,7 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
 
   _VisualizarPokemonState(this.url);
 
-  List abilidades;
+  List habilidades;
   String nome;
   String foto;
 
@@ -34,14 +34,14 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
     final json = convert.jsonDecode(response.body);
 
     setState(() {
-      abilidades = json['abilities'];
+      habilidades = json['abilities'];
       nome = json['name'];
       foto = json['sprites']['front_default'];
     });
   }
 
-  Future _retornaAbilidades() async {
-    return await abilidades;
+  Future _retornaHabilidades() async {
+    return await habilidades;
   }
 
   String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
@@ -57,7 +57,7 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
         ),
       ),
       body: FutureBuilder(
-        future: _retornaAbilidades(),
+        future: _retornaHabilidades(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return Center(
@@ -86,12 +86,12 @@ class _VisualizarPokemonState extends State<VisualizarPokemon> {
               ),
               Flexible(
                 child: ListView.builder(
-                  itemCount: abilidades.length,
+                  itemCount: habilidades.length,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Center(
                         child: Text(
-                          capitalize(abilidades[index]['ability']['name']),
+                          capitalize(habilidades[index]['ability']['name']),
                           style: TextStyle(
                             fontSize: 18.0,
                           ),
